@@ -88,7 +88,13 @@ def getAbstractDictFromUrl(url):
         pages = url.split('/')[-1][:-5]
         journal = 'Annual Meeting International Society ' \
                   'for Magnetic Resonance in Medicine'
-        if year == '2011':
+        if year == '2006':
+            title = soup.find('h1').string.replace('\n ', '')
+            author = soup.body.h1.findNext('div').\
+                get_text().replace('  ', '').replace('\t', '')
+            volume = 14
+            address = "Seattle, Washington, USA"
+        elif year == '2011':
             title = soup.find('h1').string.replace('\n ', '')
             author = soup.find('p', {'class': 'ISMRMAuthors'}).get_text()
             volume = 19
